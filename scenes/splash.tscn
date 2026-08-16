@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://d1bdpkqhjw8iq"]
+
+[ext_resource type="Texture2D" uid="uid://dyuhf1ysye7t3" path="res://media/branding/Rocket launch animation _Space exploration.svg" id="1_86pdq"]
+
+[node name="Splash" type="Control" unique_id=308404357]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1785724587]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1366201779]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=126481679]
+layout_mode = 2
+texture = ExtResource("1_86pdq")
