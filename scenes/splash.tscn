@@ -1,6 +1,22 @@
 [gd_scene format=3 uid="uid://d1bdpkqhjw8iq"]
 
-[ext_resource type="Texture2D" uid="uid://dyuhf1ysye7t3" path="res://media/branding/Rocket launch animation _Space exploration.svg" id="1_86pdq"]
+[ext_resource type="VideoStream" uid="uid://dd624nsaxb8ei" path="res://media/branding/intro.ogv" id="1_86pdq"]
+
+[sub_resource type="GDScript" id="GDScript_86pdq"]
+script/source = "extends Control
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_timer_timeout() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/main.tscn\")
+"
 
 [node name="Splash" type="Control" unique_id=308404357]
 layout_mode = 3
@@ -9,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_86pdq")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1785724587]
 layout_mode = 1
@@ -26,13 +43,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=126481679]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CenterContainer" unique_id=191127283]
 layout_mode = 2
-texture = ExtResource("1_86pdq")
+stream = ExtResource("1_86pdq")
+autoplay = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1864264055]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
