@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_file(\"res://scenes/main.tscn\")
+	get_tree().change_scene_to_file(\"res://scenes/mainMenu.tscn\")
 "
 
 [node name="Splash" type="Control" unique_id=308404357]
@@ -56,7 +56,6 @@ stream = ExtResource("1_86pdq")
 autoplay = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1864264055]
-wait_time = 10.0
 one_shot = true
 autostart = true
 
