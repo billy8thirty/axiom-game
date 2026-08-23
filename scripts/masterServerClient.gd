@@ -1,6 +1,6 @@
 extends Node
 
-# HTTP-Client fuer axiom-masterserver. Der Master wirft Eintraege ohne
+# HTTP-Client für axiom-masterserver. Der Master wirft Eintraege ohne
 # Heartbeat per TTL raus, ein verpasstes unregister ist also nicht schlimm.
 
 const DEFAULT_URL := "http://127.0.0.1:8080"
@@ -151,8 +151,7 @@ func _request(method: int, path: String, body: Variant = null, token: String = "
 	if status != HTTPRequest.RESULT_SUCCESS:
 		return {"ok": false, "code": code, "data": null,
 			"error": "Master Server nicht erreichbar (%s)" % base_url}
-
-	var data: Variant = JSON.parse_string(text)
+	var data: Variant = JSON.parse_string(text) if not text.is_empty() else {}
 
 	if code < 200 or code >= 300:
 		var message := "HTTP %d" % code

@@ -33,7 +33,7 @@ theme_override_constants/separation = 8
 
 [node name="NameLabel" type="Label" parent="Margin/Root/TopRow" unique_id=1108890016]
 layout_mode = 2
-text = "Spielername"
+text = "Player"
 
 [node name="PlayerName" type="LineEdit" parent="Margin/Root/TopRow" unique_id=2025294424]
 layout_mode = 2
@@ -113,6 +113,16 @@ max_length = 5
 layout_mode = 2
 button_pressed = true
 text = "im Browser listen"
+
+[node name="HostAddressLabel" type="Label" parent="Margin/Root/HostRow" unique_id=791481955]
+layout_mode = 2
+text = "Adresse"
+
+[node name="HostAddress" type="LineEdit" parent="Margin/Root/HostRow" unique_id=1135754659]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+tooltip_text = "Nur noetig ohne UPnP oder bei manueller Portfreigabe: deine oeffentliche IP, unter der Freunde dich erreichen. Leer lassen, wenn UPnP oben erfolgreich war."
+placeholder_text = "leer = automatisch"
 
 [node name="HostUpnp" type="CheckBox" parent="Margin/Root/HostRow" unique_id=1542422612]
 layout_mode = 2

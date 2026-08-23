@@ -21,6 +21,7 @@ const COL_ADDRESS := 5
 @onready var host_port_edit: LineEdit = $Margin/Root/HostRow/HostPort
 @onready var host_publish_check: CheckBox = $Margin/Root/HostRow/HostPublish
 @onready var host_upnp_check: CheckBox = $Margin/Root/HostRow/HostUpnp
+@onready var host_address_edit: LineEdit = $Margin/Root/HostRow/HostAddress
 @onready var host_button: Button = $Margin/Root/HostRow/HostButton
 @onready var status_label: Label = $Margin/Root/Status
 @onready var back_button: Button = $Margin/Root/BackRow/Back
@@ -181,6 +182,27 @@ func _on_host_pressed() -> void:
 	Net.server_name = wanted_name if not wanted_name.is_empty() else "axiom server"
 	Net.map_name = "world"
 	Net.mode_name = "default"
+
+	# Ohne UPnP (z.B. Speedport - kann das grundsaetzlich nicht) bleibt
+	# MasterServer.public_address sonst leer, und der Master traegt die Adresse
+	# ein, von der die Registrierung kam. Laeuft der Master lokal, ist das
+	# 127.0.0.1 und niemand von aussen kann beitreten - deshalb hier von Hand
+	# ueberschreibbar. Das Feld ist bei jedem Hosten die alleinige Quelle -
+	# sonst wuerde eine erfolgreiche Eingabe von vorhin ueberleben, wenn UPnP
+	# beim naechsten Versuch fehlschlaegt. Klappt UPnP anschliessend doch,
+	# ueberschreibt Net._announce() das hier wieder mit der echten Adresse.
+	var wanted_address := host_address_edit.text.strip_edges()
+	if wanted_address.is_empty():
+		MasterServer.public_address = ""
+	else:
+		# Ueber parse_address geschickt, damit sowohl "1.2.3.4" als auch
+		# "2003:ed:..." (mit oder ohne Klammern) landen, ohne dass hier ein
+		# eigener IPv6-Parser noetig ist. Der angehaengte Port wird verworfen.
+		var parsed := Net.parse_address(wanted_address + ":1")
+		if not parsed["ok"]:
+			_set_status("Adresse ungueltig - nur die IP/den Host angeben, ohne Port.")
+			return
+		MasterServer.public_address = str(parsed["address"])
 
 	# UPnP-Ergebnis kommt erst spaeter, da ist diese Szene weg - Anzeige in world.gd.
 	_set_status("Starte Listen-Server auf Port %d ..." % port)
