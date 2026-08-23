@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bwpotw3ccx4ja"]
 
+[ext_resource type="Texture2D" uid="uid://deh0r754snl6j" path="res://assets/materials/Texturelabs_LensFX_215M.jpg" id="1_3sglg"]
 [ext_resource type="PackedScene" uid="uid://5sx1iltlwfyi" path="res://scenes/player.tscn" id="1_4lyoc"]
 [ext_resource type="PackedScene" uid="uid://ccehkh77rdw8h" path="res://assets/blender/testworld.blend" id="2_i052m"]
 
@@ -11,14 +12,17 @@ sky_material = SubResource("PhysicalSkyMaterial_3sglg")
 [sub_resource type="Environment" id="Environment_8es24"]
 background_mode = 2
 sky = SubResource("Sky_i052m")
+ambient_light_source = 1
 tonemap_mode = 4
 tonemap_exposure = 2.0
-ssao_intensity = 6.44
+ssao_enabled = true
+ssil_enabled = true
 ssil_radius = 6.87
 ssil_sharpness = 1.0
+sdfgi_enabled = true
 sdfgi_bounce_feedback = 0.84
-sdfgi_min_cell_size = 0.1
-sdfgi_y_scale = 0
+sdfgi_min_cell_size = 0.48828125
+glow_enabled = true
 glow_levels/1 = 0.09
 glow_levels/2 = 0.09
 glow_levels/3 = 0.18
@@ -26,14 +30,14 @@ glow_levels/4 = 0.09
 glow_levels/5 = 0.18
 glow_levels/6 = 0.09
 glow_normalized = true
-glow_bloom = 1.0
-volumetric_fog_density = 0.01
+glow_intensity = 8.0
+glow_map_strength = 1.0
+glow_map = ExtResource("1_3sglg")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.001
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_1iw4b"]
 auto_exposure_enabled = true
-auto_exposure_scale = 0.2
-auto_exposure_speed = 0.3
-auto_exposure_min_exposure_value = -10.0
 auto_exposure_max_exposure_value = 16.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i052m"]
@@ -52,12 +56,14 @@ transform = Transform3D(0.16026685, -0.49481237, -0.8540933, 0.7883893, -0.45647
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=715607298 instance=ExtResource("1_4lyoc")]
+transform = Transform3D(-0.32532576, 0, 0.945602, 0, 1, 0, -0.945602, 0, -0.32532576, 0, 0, 0)
 
 [node name="testworld" parent="." unique_id=1840077430 instance=ExtResource("2_i052m")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="testworld" unique_id=596990405]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="testworld/StaticBody3D" unique_id=399141225]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_i052m")
 
 [editable path="testworld"]
