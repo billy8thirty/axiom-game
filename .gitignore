@@ -5,3 +5,7 @@ axiom.exe
 
 # Dedicated-Server-Builds
 /build/
+
+# MCP-Toolkit fuer den Editor (Dev-Werkzeug, keine Projektdatei)
+/addons/godot_mcp_toolkit/
+/.mcp.json
