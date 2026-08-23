@@ -10,6 +10,7 @@ const FALL_LIMIT := -50.0
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera: Camera3D = $CameraPivot/Camera3D
 @onready var body_mesh: MeshInstance3D = $Body
+@onready var facing_mesh: MeshInstance3D = $Facing
 @onready var name_label: Label3D = $NameLabel
 
 var peer_id := 1
@@ -38,7 +39,10 @@ func _ready() -> void:
 	_spawn_position = position
 
 	camera.current = is_local
+	# Nur fuer die anderen: Namensschild und Richtungswuerfel wuerden sonst beim
+	# Nachuntenschauen im eigenen Bild haengen.
 	name_label.visible = not is_local
+	facing_mesh.visible = not is_local
 	body_mesh.set_surface_override_material(0, _player_material())
 
 	_refresh_label()
