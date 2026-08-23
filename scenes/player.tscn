@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://boi4nbout21bh" path="res://scenes/player.gd" id="1_3vyb7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
+radius = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
+radius = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vyb7"]
+size = Vector3(0.4, 0.1, 0.3)
 
 [node name="Player" type="CharacterBody3D" unique_id=715607298]
 script = ExtResource("1_3vyb7")
@@ -10,6 +17,14 @@ script = ExtResource("1_3vyb7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=771893259]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_g4v7s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1825196004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_g4v7s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1528393758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 1.75, -0.15)
+mesh = SubResource("BoxMesh_3vyb7")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=486884604]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)

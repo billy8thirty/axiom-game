@@ -1,9 +1,14 @@
 extends CharacterBody3D
 
+@onready var cameraPivot = $CameraPivot
+@onready var camera = $CameraPivot/Camera3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+const CAMERA_SENS = 0.003
 
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -26,3 +31,10 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+func _input(event):
+	if event.is_action_pressed("ui_cancel"): get_tree().quit()
+	
+	if event is InputEventMouseMotion:
+		rotation.y -= event.relative.x * CAMERA_SENS
+		camera.rotation.x -= event.relative.y * CAMERA_SENS
