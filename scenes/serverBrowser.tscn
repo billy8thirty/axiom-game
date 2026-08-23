@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://ro584rn0rj2t"]
+
+[ext_resource type="Script" uid="uid://dyvusgyaccnk8" path="res://scripts/serverBrowser.gd" id="1_qdy45"]
+
+[node name="ServerBrowser" type="Control" unique_id=1592239277]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_qdy45")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1777976210]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="Root" type="VBoxContainer" parent="Margin" unique_id=158907759]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Margin/Root" unique_id=788687274]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Multiplayer"
+
+[node name="TopRow" type="HBoxContainer" parent="Margin/Root" unique_id=578587638]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="Margin/Root/TopRow" unique_id=1108890016]
+layout_mode = 2
+text = "Spielername"
+
+[node name="PlayerName" type="LineEdit" parent="Margin/Root/TopRow" unique_id=2025294424]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Spieler"
+max_length = 24
+
+[node name="MasterLabel" type="Label" parent="Margin/Root/TopRow" unique_id=2099390797]
+layout_mode = 2
+text = "Master Server"
+
+[node name="MasterUrl" type="LineEdit" parent="Margin/Root/TopRow" unique_id=1754795869]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "http://127.0.0.1:8080"
+
+[node name="ServerTree" type="Tree" parent="Margin/Root" unique_id=1272877908]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListRow" type="HBoxContainer" parent="Margin/Root" unique_id=1606085172]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Refresh" type="Button" parent="Margin/Root/ListRow" unique_id=129667846]
+layout_mode = 2
+text = "Aktualisieren"
+
+[node name="Join" type="Button" parent="Margin/Root/ListRow" unique_id=1632493108]
+layout_mode = 2
+text = "Beitreten"
+
+[node name="Sep1" type="HSeparator" parent="Margin/Root" unique_id=2043172777]
+layout_mode = 2
+
+[node name="DirectRow" type="HBoxContainer" parent="Margin/Root" unique_id=552775051]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DirectLabel" type="Label" parent="Margin/Root/DirectRow" unique_id=1611846752]
+layout_mode = 2
+text = "Direkt verbinden"
+
+[node name="DirectAddress" type="LineEdit" parent="Margin/Root/DirectRow" unique_id=1194789073]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "127.0.0.1:7777"
+
+[node name="DirectConnect" type="Button" parent="Margin/Root/DirectRow" unique_id=125417292]
+layout_mode = 2
+text = "Verbinden"
+
+[node name="Sep2" type="HSeparator" parent="Margin/Root" unique_id=1067442553]
+layout_mode = 2
+
+[node name="HostRow" type="HBoxContainer" parent="Margin/Root" unique_id=1223770108]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HostLabel" type="Label" parent="Margin/Root/HostRow" unique_id=1826784649]
+layout_mode = 2
+text = "Selbst hosten"
+
+[node name="HostName" type="LineEdit" parent="Margin/Root/HostRow" unique_id=2115524940]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Servername"
+max_length = 64
+
+[node name="HostPort" type="LineEdit" parent="Margin/Root/HostRow" unique_id=1009225096]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+placeholder_text = "Port"
+max_length = 5
+
+[node name="HostPublish" type="CheckBox" parent="Margin/Root/HostRow" unique_id=240315699]
+layout_mode = 2
+button_pressed = true
+text = "im Browser listen"
+
+[node name="HostUpnp" type="CheckBox" parent="Margin/Root/HostRow" unique_id=1542422612]
+layout_mode = 2
+tooltip_text = "Bittet den Router, den Port nach aussen durchzureichen - damit Freunde ohne Portfreigabe reinkommen."
+button_pressed = true
+text = "Port per UPnP oeffnen"
+
+[node name="HostButton" type="Button" parent="Margin/Root/HostRow" unique_id=547720456]
+layout_mode = 2
+text = "Listen-Server starten"
+
+[node name="Status" type="Label" parent="Margin/Root" unique_id=1101530382]
+layout_mode = 2
+text = "Bereit."
+autowrap_mode = 3
+
+[node name="BackRow" type="HBoxContainer" parent="Margin/Root" unique_id=463095653]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Margin/Root/BackRow" unique_id=1479906585]
+layout_mode = 2
+text = "Zurück"

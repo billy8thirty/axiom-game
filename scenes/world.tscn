@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://dlp5vog3unhhb"]
+
+[ext_resource type="Script" uid="uid://c5ylb0ca8imk0" path="res://scripts/world.gd" id="1_nnsk1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nnsk1"]
+sky_horizon_color = Color(0.662, 0.672, 0.687, 1)
+ground_horizon_color = Color(0.662, 0.672, 0.687, 1)
+
+[sub_resource type="Sky" id="Sky_rwgxs"]
+sky_material = SubResource("ProceduralSkyMaterial_nnsk1")
+
+[sub_resource type="Environment" id="Environment_4wyf3"]
+background_mode = 2
+sky = SubResource("Sky_rwgxs")
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0juu"]
+size = Vector3(80, 1, 80)
+
+[sub_resource type="BoxMesh" id="BoxMesh_71j4m"]
+size = Vector3(80, 1, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qfnet"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i7141"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4mrxx"]
+size = Vector3(6, 1.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7r4gi"]
+size = Vector3(6, 1.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w7kh3"]
+size = Vector3(8, 1, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e3hyu"]
+size = Vector3(8, 1, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q5onr"]
+size = Vector3(2, 3, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jhx03"]
+size = Vector3(2, 3, 2)
+
+[node name="World" type="Node3D" unique_id=1487412668]
+script = ExtResource("1_nnsk1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=140515871]
+environment = SubResource("Environment_4wyf3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=964826437]
+transform = Transform3D(0.8660248, 0.40956798, -0.28680158, 0, 0.5736019, 0.81913424, 0.5000011, -0.7093906, 0.49675345, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1209877161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=532750958]
+shape = SubResource("BoxShape3D_k0juu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1528181125]
+mesh = SubResource("BoxMesh_71j4m")
+
+[node name="Obstacles" type="Node3D" parent="." unique_id=377045100]
+
+[node name="Box1" type="StaticBody3D" parent="Obstacles" unique_id=549132049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box1" unique_id=837121265]
+shape = SubResource("BoxShape3D_qfnet")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Box1" unique_id=1386572533]
+mesh = SubResource("BoxMesh_i7141")
+
+[node name="Box2" type="StaticBody3D" parent="Obstacles" unique_id=283270527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.75, -12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box2" unique_id=250347727]
+shape = SubResource("BoxShape3D_4mrxx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Box2" unique_id=565462767]
+mesh = SubResource("BoxMesh_7r4gi")
+
+[node name="Box3" type="StaticBody3D" parent="Obstacles" unique_id=928192130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 16)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box3" unique_id=1042024228]
+shape = SubResource("BoxShape3D_w7kh3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Box3" unique_id=173141155]
+mesh = SubResource("BoxMesh_e3hyu")
+
+[node name="Box4" type="StaticBody3D" parent="Obstacles" unique_id=101363060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.5, 12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Box4" unique_id=1647345868]
+shape = SubResource("BoxShape3D_q5onr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Box4" unique_id=205461215]
+mesh = SubResource("BoxMesh_jhx03")
+
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=1076829839]
+
+[node name="Spawn1" type="Marker3D" parent="SpawnPoints" unique_id=2038874500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 4)
+
+[node name="Spawn2" type="Marker3D" parent="SpawnPoints" unique_id=107156910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 4)
+
+[node name="Spawn3" type="Marker3D" parent="SpawnPoints" unique_id=644580188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -4)
+
+[node name="Spawn4" type="Marker3D" parent="SpawnPoints" unique_id=572213560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
+
+[node name="Players" type="Node3D" parent="." unique_id=1674568355]
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=696757581]
+_spawnable_scenes = PackedStringArray("uid://5sx1iltlwfyi")
+spawn_path = NodePath("../Players")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1689599533]
+
+[node name="Info" type="Label" parent="HUD" unique_id=462202858]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 400.0
+offset_bottom = 110.0
+
+[node name="PauseMenu" type="Control" parent="HUD" unique_id=435622049]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="ColorRect" parent="HUD/PauseMenu" unique_id=567197547]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.55)
+
+[node name="Panel" type="PanelContainer" parent="HUD/PauseMenu" unique_id=563120566]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -80.0
+offset_right = 130.0
+offset_bottom = 80.0
+
+[node name="Buttons" type="VBoxContainer" parent="HUD/PauseMenu/Panel" unique_id=1365005557]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="HUD/PauseMenu/Panel/Buttons" unique_id=1194561503]
+layout_mode = 2
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="HUD/PauseMenu/Panel/Buttons" unique_id=1695836408]
+layout_mode = 2
+text = "Weiter"
+
+[node name="Leave" type="Button" parent="HUD/PauseMenu/Panel/Buttons" unique_id=580587050]
+layout_mode = 2
+text = "Verlassen"

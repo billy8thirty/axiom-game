@@ -1,17 +1,48 @@
-[gd_scene format=3 uid="uid://5sx1iltlwfyi"]
+[gd_scene load_steps=5 format=3 uid="uid://5sx1iltlwfyi"]
 
 [ext_resource type="Script" uid="uid://boi4nbout21bh" path="res://scenes/player.gd" id="1_3vyb7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
+radius = 0.4
+height = 1.8
 
-[node name="Player" type="CharacterBody3D" unique_id=715607298]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_axiom"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_axiom"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_3vyb7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=771893259]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_g4v7s")
 
-[node name="CameraPivot" type="Node3D" parent="." unique_id=486884604]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_axiom")
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1864316158]
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+
+[node name="NameLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+pixel_size = 0.0015
+text = "Spieler"
+font_size = 64
+outline_size = 20
+
+[node name="Synchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_axiom")
