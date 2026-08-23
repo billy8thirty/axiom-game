@@ -20,8 +20,6 @@ var _spawn_position := Vector3.ZERO
 
 
 func _enter_tree() -> void:
-	# Node-Name ist die Peer-ID (Net._spawn_player). So brauchen Server und
-	# Clients kein extra RPC fuer die Authority.
 	peer_id = str(name).to_int()
 	set_multiplayer_authority(peer_id)
 
@@ -29,8 +27,6 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	is_local = is_multiplayer_authority()
 
-	# Die vom Server zugewiesene Startposition kommt nicht ueber den
-	# Spawn-State - ohne das starten alle Figuren im Ursprung.
 	if is_local:
 		var assigned := Net.take_spawn_position()
 		if assigned.is_finite():
@@ -39,8 +35,6 @@ func _ready() -> void:
 	_spawn_position = position
 
 	camera.current = is_local
-	# Nur fuer die anderen: Namensschild und Richtungswuerfel wuerden sonst beim
-	# Nachuntenschauen im eigenen Bild haengen.
 	name_label.visible = not is_local
 	facing_mesh.visible = not is_local
 	body_mesh.set_surface_override_material(0, _player_material())
@@ -86,7 +80,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			-PITCH_LIMIT, PITCH_LIMIT)
 
 
-# Falls Net._set_spawn erst nach dem Spawn-Paket eintrifft.
 func apply_spawn_position(spawn: Vector3) -> void:
 	position = spawn
 	velocity = Vector3.ZERO
