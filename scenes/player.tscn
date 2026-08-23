@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://boi4nbout21bh" path="res://scenes/player.gd" id="1_3vyb7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
-<<<<<<< Updated upstream
 radius = 0.4
 height = 1.8
 
@@ -13,10 +12,6 @@ height = 1.8
 
 [sub_resource type="BoxMesh" id="BoxMesh_3vyb7"]
 size = Vector3(0.4, 0.1, 0.3)
-=======
-radius = 0.15625
-height = 1.6010742
->>>>>>> Stashed changes
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_axiom"]
 properties/0/path = NodePath(".:position")
@@ -29,7 +24,6 @@ properties/1/replication_mode = 1
 [node name="Player" type="CharacterBody3D" unique_id=2010055439]
 script = ExtResource("1_3vyb7")
 
-<<<<<<< Updated upstream
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1086208100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_g4v7s")
@@ -44,14 +38,6 @@ mesh = SubResource("BoxMesh_3vyb7")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=29114148]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
-=======
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=771893259]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8005371, 0)
-shape = SubResource("CapsuleShape3D_g4v7s")
-
-[node name="CameraPivot" type="Node3D" parent="." unique_id=486884604]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
->>>>>>> Stashed changes
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1285723099]
 
