@@ -1,0 +1,7 @@
+[gd_resource type="Terrain3DTextureAsset" format=3 uid="uid://bloit2h1ryf6m"]
+
+[ext_resource type="Texture2D" uid="uid://bl8imfuv72ro" path="res://assets/materials/brown_mud_leaves_01_2k/brown_mud_leaves_01_diff_2k.jpg" id="1_pwsph"]
+
+[resource]
+name = "brown_mud_leaves_01_diff_2k"
+albedo_texture = ExtResource("1_pwsph")

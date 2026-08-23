@@ -1,0 +1,8 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://d2htdkvjui6h"]
+
+[ext_resource type="Texture2D" uid="uid://bl8imfuv72ro" path="res://assets/materials/brown_mud_leaves_01_2k/brown_mud_leaves_01_diff_2k.jpg" id="1_5fcbn"]
+
+[resource]
+albedo_texture = ExtResource("1_5fcbn")
+distance_fade_min_distance = 161.68
+distance_fade_max_distance = 0.0
