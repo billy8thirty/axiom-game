@@ -29,10 +29,10 @@ PortMapper="*uid://d2uauo4jn3qyp"
 
 [display]
 
-window/size/mode=3
 window/size/borderless=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [editor]
 
@@ -41,7 +41,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_mcp_toolkit/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

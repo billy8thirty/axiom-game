@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://djmhclltx6ono"]
 
+[ext_resource type="Script" uid="uid://bxthkkt4qkyvb" path="res://scripts/Car.gd" id="1_p5ppe"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8tcj"]
 resource_name = "Glass"
 cull_mode = 2
@@ -874,7 +876,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7ouca")
 
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_g4v7s"]
+
 [node name="Turbo5" type="VehicleBody3D" unique_id=1620553392]
+script = ExtResource("1_p5ppe")
 
 [node name="BackWindows" type="MeshInstance3D" parent="." unique_id=1811140466]
 mesh = SubResource("ArrayMesh_pu15x")
@@ -929,7 +934,10 @@ shape = SubResource("BoxShape3D_57qmd")
 
 [node name="FL" type="VehicleWheel3D" parent="." unique_id=625237142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8313043, 0.34931308, 1.288413)
+use_as_steering = true
 wheel_radius = 0.349
+suspension_travel = 0.5
+suspension_stiffness = 10.0
 
 [node name="WheelFL" type="MeshInstance3D" parent="FL" unique_id=1576472490]
 transform = Transform3D(0.8560258, 0, 0, 0, 1.0011563, 0, 0, 0, 1.0011562, -0.16325212, 0.0006869137, -0.003411889)
@@ -937,7 +945,10 @@ mesh = SubResource("ArrayMesh_b8ic8")
 
 [node name="RL" type="VehicleWheel3D" parent="." unique_id=1878621821]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8313043, 0.34931308, -1.2846289)
+use_as_traction = true
 wheel_radius = 0.349
+suspension_travel = 0.5
+suspension_stiffness = 10.0
 
 [node name="WheelRL" type="MeshInstance3D" parent="RL" unique_id=656992519]
 transform = Transform3D(1.027598, 0, 0, 0, 1.0011563, 0, 0, 0, 1.0011562, -0.17606401, 0.0006869137, 0.002202034)
@@ -945,7 +956,10 @@ mesh = SubResource("ArrayMesh_ff8nd")
 
 [node name="FR" type="VehicleWheel3D" parent="." unique_id=1422620053]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.831, 0.34931308, 1.288413)
+use_as_steering = true
 wheel_radius = 0.349
+suspension_travel = 0.5
+suspension_stiffness = 10.0
 
 [node name="WheelFR" type="MeshInstance3D" parent="FR" unique_id=73951747]
 transform = Transform3D(0.8560258, 0, 0, 0, 1.0011563, 0, 0, 0, 1.0011562, 1.4990522, 0.0006869137, -0.003411889)
@@ -953,8 +967,20 @@ mesh = SubResource("ArrayMesh_15860")
 
 [node name="RR" type="VehicleWheel3D" parent="." unique_id=488472372]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.831, 0.34931308, -1.2846289)
+use_as_traction = true
 wheel_radius = 0.349
+suspension_travel = 0.5
+suspension_stiffness = 10.0
 
 [node name="WheelRR" type="MeshInstance3D" parent="RR" unique_id=1047444046]
 transform = Transform3D(1.027598, 0, 0, 0, 1.0011563, 0, 0, 0, 1.0011562, 1.4862403, 0.0006869137, 0.002202034)
 mesh = SubResource("ArrayMesh_bt1is")
+
+[node name="cameraPivot" type="Node3D" parent="." unique_id=1937360731]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="cameraPivot" unique_id=1780079180]
+transform = Transform3D(-0.9998724, -0.01129988, 0.011292896, -0.007995325, 0.9659423, 0.25863403, -0.01383082, 0.25851074, -0.96590936, 0, 1, 0)
+shape = SubResource("SeparationRayShape3D_g4v7s")
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="cameraPivot/SpringArm3D" unique_id=1875363444]

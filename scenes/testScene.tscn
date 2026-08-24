@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bwpotw3ccx4ja"]
 
 [ext_resource type="Texture2D" uid="uid://deh0r754snl6j" path="res://assets/materials/Texturelabs_LensFX_215M.jpg" id="1_3sglg"]
-[ext_resource type="PackedScene" uid="uid://5sx1iltlwfyi" path="res://scenes/player.tscn" id="1_4lyoc"]
 [ext_resource type="PackedScene" uid="uid://ccehkh77rdw8h" path="res://assets/blender/testworld.blend" id="2_i052m"]
+[ext_resource type="PackedScene" uid="uid://djmhclltx6ono" path="res://scenes/Turbo5.tscn" id="3_3sglg"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_3sglg"]
 
@@ -55,9 +55,6 @@ camera_attributes = SubResource("CameraAttributesPhysical_1iw4b")
 transform = Transform3D(0.16026685, -0.49481237, -0.8540933, 0.7883893, -0.45647866, 0.4123952, -0.59393334, -0.73945135, 0.3169465, 0.06286049, 0.08667636, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." unique_id=715607298 instance=ExtResource("1_4lyoc")]
-transform = Transform3D(-0.32532576, 0, 0.945602, 0, 1, 0, -0.945602, 0, -0.32532576, 0, 0, 0)
-
 [node name="testworld" parent="." unique_id=1840077430 instance=ExtResource("2_i052m")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="testworld" unique_id=596990405]
@@ -65,5 +62,7 @@ transform = Transform3D(-0.32532576, 0, 0.945602, 0, 1, 0, -0.945602, 0, -0.3253
 [node name="CollisionShape3D" type="CollisionShape3D" parent="testworld/StaticBody3D" unique_id=399141225]
 visible = false
 shape = SubResource("ConcavePolygonShape3D_i052m")
+
+[node name="Turbo5" parent="." unique_id=1620553392 instance=ExtResource("3_3sglg")]
 
 [editable path="testworld"]
